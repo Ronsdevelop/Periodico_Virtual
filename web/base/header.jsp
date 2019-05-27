@@ -29,7 +29,7 @@
                             <img src="../Plugins/dist/img/avatar.png" class="img-circle" alt="User Image">
 
                             <p>
-                                RONY AGUILERA
+                                RONY AGUILERA RIVERA
                                 <small> Mayo 2019</small>
                             </p>
                         </li>
