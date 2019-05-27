@@ -1,0 +1,83 @@
+/*
+ * Tapiz: Azul
+ * ----------
+ */
+.tapiz .main-header .navbar {
+    background-color:  #FFD777;  /* Color Cabecera de la parte derecha*/
+}
+.tapiz .main-header .navbar .nav > li > a {
+    color: #ffffff; /* letras Cabecera derecha */
+}
+.tapiz .main-header .navbar .nav > li > a:hover,
+.tapiz .main-header .navbar .nav > li > a:active,
+.tapiz .main-header .navbar .nav > li > a:focus,
+.tapiz .main-header .navbar .nav .open > a,
+.tapiz .main-header .navbar .nav .open > a:hover,
+.tapiz .main-header .navbar .nav .open > a:focus,
+.tapiz .main-header .navbar .nav > .active > a {
+    background:rgba(0, 0, 0, 0.1) ; /* Color al momento de hacer clic en los submenus */
+    color: #f6f6f6; /* Color de letra al momento de pasar el puntero */
+}
+.tapiz .main-header .navbar .sidebar-toggle {
+    color: #ffffff; /* Color del icono del menu replegable */
+}
+.tapiz .main-header .navbar .sidebar-toggle:hover {
+    color: #f6f6f6; /* Color de letra al momento de pasar el puntero */
+    background: rgba(0, 0, 0, 0.1); /* Color al pasar el puntero por el icono del menu repleglable */
+}
+
+.tapiz .main-header .logo {
+    background-color:  #f4d03f; /* Color de la caja del logo*/
+    color: #ffffff; /* Color de letra del logo */
+    border-bottom: 0 solid transparent; /* border del logo */
+}
+.tapiz .main-header .logo:hover {
+    background-color: #E5C16B; /* Color al pasar el puntero por el logo */
+}
+.tapiz .main-header li.user-header {
+    background-color: #FFD777;/* Color de fondo del submenu de usuario */
+}
+.tapiz .content-header {
+    background: transparent;/* Color de fondo de la cabecera del contenido de la pagina principal */
+}
+.tapiz .wrapper,
+.tapiz .main-sidebar,
+.tapiz .left-side {
+    background-color: #424A5D;/* Color de fondo de la barra de menu lateral */
+}
+.tapiz .user-panel > .info,
+.tapiz .user-panel > .info > a {
+    color: #fff;/* Color de la info del usurio conectado */
+}
+.tapiz .sidebar-menu > li.header {
+    color: #4b646f;
+    background: #1a2226;/* Color de la cabecera del la barra de menu */
+}
+.tapiz .sidebar-menu > li > a {
+    border-left: 3px solid transparent;/* Color del border de cada opcion de menu */
+}
+.tapiz .sidebar-menu > li:hover > a,
+.tapiz .sidebar-menu > li.active > a,
+.tapiz .sidebar-menu > li.menu-open > a {
+    color: #ffffff;
+    background: #68DFF0; /* Color la opcion activada por defecto y al momento de pasar el puntero por cada uno de las opciones del menu */
+}
+.tapiz .sidebar-menu > li.active > a {
+    border-left-color: #3c8dbc; /* Color del borden la opcion de menu activada por defecto */
+}
+.tapiz .sidebar-menu > li > .treeview-menu {
+    margin: 0 1px;
+    background: #2c3b41;  /* Color de fondo de los botones desplegables del menu*/
+}
+.tapiz .sidebar a {
+    color: #b8c7ce;  /* Color los enlaces de los bontones de las opciones del menu */
+}
+
+.tapiz .sidebar-menu .treeview-menu > li > a {
+    color: #8aa4af; /* Color de las listas de los botones desplegables */
+}
+.tapiz .sidebar-menu .treeview-menu > li.active > a,
+.tapiz .sidebar-menu .treeview-menu > li > a:hover {
+    color: #ffffff;  /* Color de letra del boton de las listas desplegables' */
+}
+
