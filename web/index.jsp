@@ -34,7 +34,7 @@
 	  <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form class="form-login" action="index.html">
+                    <form class="form-login" action="vistas/home.jsp">
 		        <h2 class="form-login-heading">Iniciar Sesión</h2>
 		        <div class="login-wrap">
 		            <input type="text" class="form-control" placeholder="Usuario" autofocus>

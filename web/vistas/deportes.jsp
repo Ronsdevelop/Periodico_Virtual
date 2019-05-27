@@ -60,7 +60,7 @@
                                       
                                         out.print("</div>");
 
-                                        out.print("<a href='#'   class='small-box-footer'> mas info  <i class='fa fa-arrow-circle-right'></i></a>");
+                                        out.print("<a href='../vistas/listarnoticias.jsp'   class='small-box-footer'> Noticias <i class='fa fa-arrow-circle-right'></i></a>");
 
                                         out.print("</div>");
                                         out.print("</div>");
