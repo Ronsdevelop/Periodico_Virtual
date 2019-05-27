@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.1.37-MariaDB : Database - bdperiodicovirtual
+MySQL - 5.5.5-10.1.32-MariaDB : Database - bdperiodicovirtual
 *********************************************************************
 */
 
@@ -48,7 +48,7 @@ CREATE TABLE `diario` (
 
 /*Data for the table `diario` */
 
-insert  into `diario`(`idDiario`,`Diario`,`Descripcion`,`idGenero`,`logo`) values ('DI00000001','DEPOR','DIARIO DEPOR ','01','../Plugins/dist/img/depor.png'),('DI00000002','CORREO','DIARIO CORREO','02','RRT'),('DI00000003','LIBERO','DIARIO LIBERO','01','../Plugins/dist/img/libero.jpg');
+insert  into `diario`(`idDiario`,`Diario`,`Descripcion`,`idGenero`,`logo`) values ('DI00000001','DEPOR','DIARIO DEPOR ','01','../Plugins/dist/img/depor.png'),('DI00000002','CORREO','DIARIO CORREO','02','RRT'),('DI00000003','LIBERO','DIARIO LIBERO','01','../Plugins/dist/img/libero.jpg'),('DI00000004','EL BOCON','DIARIO EL BOCON','01','../Plugins/dist/img/bocon.jpg'),('DI00000005','TODO SPORT','DIARIO TODO SPORT','01','../Plugins/dist/img/todosport.png'),('DI00000006','COMERCIO','DIARIO COMERCIO','01','../Plugins/dist/img/comercio.png');
 
 /*Table structure for table `genero` */
 
