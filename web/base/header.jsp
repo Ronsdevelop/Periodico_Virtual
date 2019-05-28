@@ -72,7 +72,7 @@
 
           
             <li><a href="deportes.jsp"><i class="fa fa-futbol-o"></i> <span>DEPORTES</span></a></li>
-            <li><a href="#"><i class="fa fa-group"></i> <span>POLITICA</span></a></li>          
+            <li><a href="politica.jsp"><i class="fa fa-group"></i> <span>POLITICA</span></a></li>          
             <li><a href="#"><i class="fa fa-video-camera"></i> <span>FARANDULA</span></a></li>
             <li><a href="#"><i class="fa fa-users"></i> <span>COCINA</span></a></li>
             <li><a href="#"><i class="fa fa-users"></i> <span>ACTUALIDAD</span></a></li>
