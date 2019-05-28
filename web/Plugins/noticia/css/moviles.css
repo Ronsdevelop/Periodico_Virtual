@@ -1,0 +1,75 @@
+@charset "utf-8";
+#encabezado {
+	width: 95%;
+}
+#encabezado #logo {
+	width: 45%;
+}
+#encabezado #contacto {
+	width: 45%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	margin-top: 2.5%;
+}
+#encabezado #contacto p {
+	font-size: 0.8em;
+}
+p a img {
+	width: 19%;
+	float: right;
+}
+#encabezado #redessociales {
+	width: 95%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 0px;
+}
+#menu ul {
+	width: 95%;
+}
+#menu ul li {
+	width: 100%;
+	text-align: center;
+}
+#imagenesenmovimiento #caja {
+	width: 95%;
+	margin-right: auto;
+	margin-left: auto;
+}
+#cuerpo #contenidogeneral {
+	width: 95%;
+	margin-right: auto;
+	margin-left: auto;
+}
+#solapa #faldon {
+	width: 95%;
+	margin-right: auto;
+	margin-left: auto;
+}
+#imagenesenmovimiento #caja video {
+	display: none;
+}
+#imagenesenmovimiento #caja p {
+	font-size: 1.2em;
+}
+#cuerpo #contenidogeneral figure {
+	width: 95%;
+}
+#cuerpo #contenidogeneral #contenido {
+	width: 95%;
+	margin-right: auto;
+	margin-left: auto;
+}
+#contenido #contenidonoticias img  {
+	width: 100%;
+}
+#cuerpo #contenidogeneral #derecha {
+	width: 95%;
+	margin-right: auto;
+	margin-left: auto;
+	float: none;
+}
+#contenido #noticia1 img {
+	width: 100%;
+	float: left;
+}

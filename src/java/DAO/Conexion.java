@@ -18,7 +18,7 @@ public class Conexion {
     {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            return (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/bdperiodicovirtual?zeroDateTimeBehavior=convertToNull","root","HEAVYmetal2018");
+            return (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/bdperiodicovirtual?zeroDateTimeBehavior=convertToNull","root","");
         } catch (ClassNotFoundException  ex) {
             return null;
         }catch(SQLException ex){

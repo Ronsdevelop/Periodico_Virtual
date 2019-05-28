@@ -20,13 +20,13 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="../Plugins/dist/img/avatar.png" class="user-image" alt="User Image">
+                        <img src="../Plugins/dist/img/user1-128x128.jpg" class="user-image" alt="User Image">
                         <span class="hidden-xs">REDACTOR</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="../Plugins/dist/img/avatar.png" class="img-circle" alt="User Image">
+                            <img src="../Plugins/dist/img/user1-128x128.jpg" class="img-circle" alt="User Image">
 
                             <p>
                                 RONY AGUILERA RIVERA
@@ -40,7 +40,7 @@
                                 <a  data-toggle="modal" data-target="#modal-info" class="btn btn-default btn-flat">Perfil</a>
                             </div>
                             <div class="pull-right">
-                                <a href="../CerrarSesionServlet" class="btn btn-default btn-flat">Salir</a>
+                                <a href="../index.jsp" class="btn btn-default btn-flat">Salir</a>
                             </div>
                         </li>
                     </ul>
@@ -104,8 +104,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Redactores</a></li>
-                    <li><a href="#">Tipo Usuarios</a></li>
+                    <li><a href="redactores.jsp">Redactores</a></li>
+                    <li><a href="tipousuarios.jsp">Tipo Usuarios</a></li>
                     <li><a href="#">Generos</a></li>
                     <li><a href="#">Diarios</a></li>
                     <li><a href="#">Usuarios</a></li>
