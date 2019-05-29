@@ -92,7 +92,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#" >Crear Noticia</a></li>
+                    <li><a href="redaccionnoticias.jsp" >Crear Noticia</a></li>
                     <li><a href="#">ListaNoticias</a></li>                 
                 </ul>
             </li>
