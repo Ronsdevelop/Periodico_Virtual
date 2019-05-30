@@ -19,10 +19,11 @@ public class PaginacionServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int cod = Integer.parseInt(request.getParameter("page"));
+            String coddiari =  request.getParameter("codigo");
             int cantidapa = (cod - 1)* 6;
             NoticiaDAO c = new NoticiaDAO();
             DefaultTableModel t = new DefaultTableModel();
-            t = c.paginacionNoticia(Conexion.conectar(), cantidapa);
+            t = c.paginacionNoticia(Conexion.conectar(),coddiari, cantidapa);
 
             if (t.getRowCount() > 0) {
                 for (int j = 0; j < t.getRowCount(); j++) {
@@ -32,7 +33,7 @@ public class PaginacionServlet extends HttpServlet {
                     out.print("<h3>" + t.getValueAt(j, 2) + "</h3>");
                     out.print("<p class='description_short'>" + t.getValueAt(j, 3) + "</p>");
                      
-                    out.print("<p><a class='btn btn-info' id='figcaption' href='../vistas/noticia.jsp?codno="+t.getValueAt(j, 0)+"' target='_blank'><i class='fa fa-eye'></i> Ver</a></p>");
+                    out.print("<p><a class='btn btn-info' id='figcaption' href='../vistas/noticia.jsp?codno="+t.getValueAt(j, 0)+"'><i class='fa fa-eye'></i> Ver Noticia</a></p>");
                     out.print("</div>");
                     out.print("</li>");
 

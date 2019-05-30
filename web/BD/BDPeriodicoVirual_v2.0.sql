@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.1.37-MariaDB : Database - bdperiodicovirtual
+MySQL - 5.5.5-10.1.32-MariaDB : Database - bdperiodicovirtual
 *********************************************************************
 */
 
@@ -92,7 +92,7 @@ CREATE TABLE `noticia` (
 
 /*Data for the table `noticia` */
 
-insert  into `noticia`(`idNoticia`,`anteTitulo`,`Titular`,`Entradilla`,`CuerpoNoticia`,`subtitulo`,`fecha`,`fuente`,`fotografia`,`epigrafe`,`video`,`idRedactor`,`idDiario`) values ('NOT00000000000000001','Ricardo Gareca va disipando sus dudas','Ricardo Gareca sorprendido con desempeño de este jugador en los entrenamientos de la Selección','el mejor jugador del momento que tiene la seleccion','Ricardo Gareca no quiere llevar a nadie a la Copa América de Brasil de paseo. Por ello viene observando en los entrenamientos al jugador diferente. Varios se esfuerzan pero, por ahora solo hay uno que lo tiene apuntado por su gran nivel; Beto Da Silva ','garequita','2019-05-28','libero','../Plugins/noticia/images/planes/garecanoti.jpg','Imagen de gareca','http://www.htmlquick.com/es/reference/tags/input-image.html','RE00000001','DI00000003'),('NOT00000000000000002',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000006'),('NOT00000000000000003',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000004'),('NOT00000000000000004',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000005',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000005'),('NOT00000000000000006',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000007',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000008',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000009',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000010',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000004');
+insert  into `noticia`(`idNoticia`,`anteTitulo`,`Titular`,`Entradilla`,`CuerpoNoticia`,`subtitulo`,`fecha`,`fuente`,`fotografia`,`epigrafe`,`video`,`idRedactor`,`idDiario`) values ('NOT00000000000000001','Ricardo Gareca va disipando sus dudas','Ricardo Gareca sorprendido con desempeño de este jugador en los entrenamientos de la Selección','el mejor jugador del momento que tiene la seleccion','Ricardo Gareca no quiere llevar a nadie a la Copa América de Brasil de paseo. Por ello viene observando en los entrenamientos al jugador diferente. Varios se esfuerzan pero, por ahora solo hay uno que lo tiene apuntado por su gran nivel; Beto Da Silva ','garequita','2019-05-28','libero','../Plugins/noticia/images/planes/garecanoti.jpg','Imagen de gareca','http://www.htmlquick.com/es/reference/tags/input-image.html','RE00000001','DI00000003'),('NOT00000000000000002',NULL,'ADVINCULA TIENE QUE JUGAR EN LA SELECCION','El correcaminos, usain boll no lo para nadie','Ricardo Gareca no quiere llevar a nadie a la Copa América de Brasil de paseo.',NULL,NULL,NULL,'../Plugins/noticia/images/planes/advincula.jpg',NULL,NULL,'RE00000001','DI00000006'),('NOT00000000000000003',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000004'),('NOT00000000000000004',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000005',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000005'),('NOT00000000000000006',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000007',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000008',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000009',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000010',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000004'),('NOT00000000000000011',NULL,'ADVINCULA TIENE QUE JUGAR EN LA SELECCION',NULL,NULL,NULL,NULL,NULL,'../Plugins/noticia/images/planes/advincula.jpg',NULL,NULL,'RE00000001','DI00000003');
 
 /*Table structure for table `redactor` */
 
@@ -146,6 +146,19 @@ CREATE TABLE `usuarios` (
 
 /*Data for the table `usuarios` */
 
+/* Procedure structure for procedure `sp_ListaNoticiasPorDiario` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `sp_ListaNoticiasPorDiario` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ListaNoticiasPorDiario`(idDiarios char(10))
+BEGIN
+	SELECT * FROM vistaDiario
+	WHERE idDiario =idDiarios;
+    END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `sp_paginacionNoticias` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `sp_paginacionNoticias` */;
@@ -168,14 +181,44 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_paginacionprimer`()
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_paginacionprimer`( iddiario char(10))
 BEGIN
-    SET @consulta=CONCAT('SELECT * FROM  noticia ORDER BY idNoticia ASC LIMIT 0,6;');
+    SET @consulta=CONCAT('SELECT * FROM  noticia WHERE idDiario = ', iddiario,' ORDER BY idNoticia DESC LIMIT 0,6;');
 	
 	PREPARE consulta FROM @consulta;
 	EXECUTE consulta;
     END */$$
 DELIMITER ;
+
+/*Table structure for table `vistadiario` */
+
+DROP TABLE IF EXISTS `vistadiario`;
+
+/*!50001 DROP VIEW IF EXISTS `vistadiario` */;
+/*!50001 DROP TABLE IF EXISTS `vistadiario` */;
+
+/*!50001 CREATE TABLE  `vistadiario`(
+ `idNoticia` char(20) ,
+ `anteTitulo` varchar(100) ,
+ `Titular` varchar(150) ,
+ `Entradilla` text ,
+ `CuerpoNoticia` text ,
+ `subtitulo` varchar(150) ,
+ `fecha` date ,
+ `fuente` varchar(200) ,
+ `fotografia` varchar(150) ,
+ `epigrafe` varchar(100) ,
+ `video` varchar(150) ,
+ `idRedactor` char(10) ,
+ `idDiario` char(10) 
+)*/;
+
+/*View structure for view vistadiario */
+
+/*!50001 DROP TABLE IF EXISTS `vistadiario` */;
+/*!50001 DROP VIEW IF EXISTS `vistadiario` */;
+
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vistadiario` AS select `noticia`.`idNoticia` AS `idNoticia`,`noticia`.`anteTitulo` AS `anteTitulo`,`noticia`.`Titular` AS `Titular`,`noticia`.`Entradilla` AS `Entradilla`,`noticia`.`CuerpoNoticia` AS `CuerpoNoticia`,`noticia`.`subtitulo` AS `subtitulo`,`noticia`.`fecha` AS `fecha`,`noticia`.`fuente` AS `fuente`,`noticia`.`fotografia` AS `fotografia`,`noticia`.`epigrafe` AS `epigrafe`,`noticia`.`video` AS `video`,`noticia`.`idRedactor` AS `idRedactor`,`noticia`.`idDiario` AS `idDiario` from `noticia` order by `noticia`.`idNoticia` desc limit 0,6 */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

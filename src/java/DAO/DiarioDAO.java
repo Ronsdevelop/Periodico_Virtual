@@ -72,5 +72,32 @@ public class DiarioDAO {
         }
 
     }
+    public DefaultTableModel nombreDiario(Connection cn, String cod) {
+        try {
+            DefaultTableModel dt;
+            String [] columnas = {"idDiario", "Diario"};
+            cs = cn.prepareCall("SELECT idDiario, Diario FROM diario WHERE idDiario=?");
+            cs.setString(1, cod);
+            cn.setAutoCommit(false);
+            rs = cs.executeQuery();
+            dt = new DefaultTableModel(null, columnas);
+            while (rs.next()) {
+                Object[] dato = new Object[2];
+                for (int i = 0; i < 2; i++) {
+                    dato[i] = rs.getString(i + 1);
+
+                }
+                dt.addRow(dato);
+
+            }
+            cn.close();
+            return dt;
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+    
+
 
 }

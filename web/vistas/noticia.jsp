@@ -1,9 +1,14 @@
 <%@page import="javax.swing.table.DefaultTableModel"%>
-<%@page import="DAO.Conexion"%>
-<%@page import="DAO.DeportesDao"%>
-<%@page import="DAO.DiarioDAO"%>
-<% DeportesDao de = new DeportesDao(); %>
-<% DiarioDAO di = new DiarioDAO();%>
+<%@page import="DAO.Conexion"%> 
+<%@page import="DAO.NoticiaDAO"%>  
+<% DefaultTableModel data = new DefaultTableModel();%>
+<% NoticiaDAO noti = new NoticiaDAO();
+   Conexion cn = new Conexion();
+String cod = request.getParameter("codno");
+%>
+
+<% data = noti.detalleNoticia(cn.conectar(), cod);%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -57,20 +62,19 @@
                 <section class="content">     
                     <div class="page-header"><!-- InstanceBeginEditable name="noticias" -->
                         <div class="contenedor">
-                            <img src="../Plugins/noticia/images/planes/garecanoti.jpg" style="margin:10px auto;
+                            <img src="<%= data.getValueAt(0, 8) %>" style="margin:10px auto;
                                  display:block;  " />
 
-                            <div class="centrado"><h2>Ricardo Gareca sorprendido con desempeño de este jugador en los entrenamientos de la Selección</h2></div>
+                            <div class="centrado"><h2><%= data.getValueAt(0, 2) %></h2></div>
                         </div>
                         <div class="container texto">
 
 
-                            <small style="font-size: medium; text-align: center">Ricardo Gareca va disipando sus dudas respecto a la lista final de 23 para la Copa América. Beto Da Silva la rompe en las prácticas de la bicolor.</small>
-                            <p style="font-size: smaller">28 May 2019 | 13:56 h </p>
-                            <p> Ricardo Gareca no quiere llevar a nadie a la Copa América de Brasil de paseo. Por ello viene observando en los entrenamientos al jugador diferente. Varios se esfuerzan pero, por ahora solo hay uno que lo tiene apuntado por su gran nivel; Beto Da Silva </p>
-                            <p>El atacante del Lobos BUAP viene aprovechando al milímetro sus opciones de meterse a la lista final que llevará el “Tigre” a la Copa América</p>
-                            <p>Su polifuncionalidad, cambio de ritmo y olfato goleador son cualidades que destacan en los entrenamientos. “Será difícil quedarse por la calidad del plantel. Hay muchos delanteros en un universo grande de jugadores. No me siento confiado de quedar en la lista de 23 jugadores. Estoy trabajando al máximo para demostrar que puedo ser útil”, manifestó el atacante.</p>
-                            <p>Yordy Reyna y Andy Polo también luchan -junto a Da Silva- la posibilidad de alcanzar un cupo en la nómina de Gareca. Paolo, “Jeffry”, Carrillo y Ruidíaz son recontra fijos.    .</p>
+                            <small style="font-size: medium; text-align: center"><%= data.getValueAt(0, 1) %></small>
+                            <p style="font-size: smaller"><%= data.getValueAt(0, 6) %> </p>
+                            <p> <%= data.getValueAt(0, 3) %></p>
+                            <p><%= data.getValueAt(0, 4) %></p>
+                            <video src="<%= data.getValueAt(0, 10) %>"></video>
                         </div>
                         <!-- InstanceEndEditable --></div>
 

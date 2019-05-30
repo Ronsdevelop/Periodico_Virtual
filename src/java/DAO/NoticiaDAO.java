@@ -64,12 +64,13 @@ public class NoticiaDAO {
         }
     }
     
-  public static int CantNoticias() {
+  public static int CantNoticias(String cod) {
         Connection con = Conexion.conectar();
         try {
-            String SQL = "SELECT COUNT(*) AS total_noticias FROM noticia";
+            String SQL = "SELECT COUNT(*) AS total_noticias FROM noticia where idDiario=?";
 
             PreparedStatement st = con.prepareStatement(SQL);
+            st.setString(1, cod);
             ResultSet resultado = st.executeQuery();
             while (resultado.next()) {
               
@@ -90,11 +91,12 @@ public class NoticiaDAO {
 
     }
   
-      public DefaultTableModel ListaNews(Connection cn){
+      public DefaultTableModel ListaNews(Connection cn, String id){
         try {
            DefaultTableModel tb;
            String [] Columnas = {"idNoticia","anteTitulo","Titular","Entradilla","CuerpoNoticia","subtitulo","fecha","fuente","fotografia","epigrafe","video","idRedactor","idDiario"};
-           cs = cn.prepareCall("CALL sp_paginacionprimer();");
+           cs = cn.prepareCall("SELECT * FROM  noticia WHERE idDiario = ? ORDER BY idNoticia DESC LIMIT 0,6;");
+           cs.setString(1, id);
            cn.setAutoCommit(false);
            rs = cs.executeQuery();
            tb = new DefaultTableModel(null,Columnas);
@@ -116,12 +118,40 @@ public class NoticiaDAO {
         
         
     }
-      public DefaultTableModel paginacionNoticia(Connection cn, int ini){
+      public DefaultTableModel paginacionNoticia(Connection cn, String cod,int ini){
         try {
            DefaultTableModel tb;
            String [] Columnas = {"idNoticia","anteTitulo","Titular","Entradilla","CuerpoNoticia","subtitulo","fecha","fuente","fotografia","epigrafe","video","idRedactor","idDiario"};
-           cs = cn.prepareCall("CALL sp_paginacionNoticias(?);");
-           cs.setInt(1, ini);
+           cs = cn.prepareCall("SELECT * FROM  noticia WHERE idDiario = ? ORDER BY idNoticia DESC LIMIT ?,6;;");
+            cs.setString(1, cod);
+           cs.setInt(2, ini);
+           cn.setAutoCommit(false);
+           rs = cs.executeQuery();
+           tb = new DefaultTableModel(null,Columnas);
+            while (rs.next()) {
+                Object []dato = new Object[13];
+                for (int i = 0; i < 13; i++) {
+                    dato[i] = rs.getString(i+1);
+                    
+                }
+                tb.addRow(dato);
+                
+            }
+            cn.close();
+            return tb;
+            
+        } catch (Exception e) {
+            return null;
+        }
+        
+        
+    }
+      public DefaultTableModel detalleNoticia(Connection cn, String ini){
+        try {
+           DefaultTableModel tb;
+           String [] Columnas = {"idNoticia","anteTitulo","Titular","Entradilla","CuerpoNoticia","subtitulo","fecha","fuente","fotografia","epigrafe","video","idRedactor","idDiario"};
+           cs = cn.prepareCall("SELECT * FROM noticia WHERE idNoticia = ?;");
+           cs.setString(1, ini);
            cn.setAutoCommit(false);
            rs = cs.executeQuery();
            tb = new DefaultTableModel(null,Columnas);

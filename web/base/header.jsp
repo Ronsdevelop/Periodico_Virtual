@@ -92,8 +92,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="redaccionnoticias.jsp" >Crear Noticia</a></li>
-                    <li><a href="#">ListaNoticias</a></li>                 
+                    <li><a href="listadonoticiasredactor.jsp" >Crear Noticia</a></li>
+                    <li><a href="#">Mensajes</a></li>                 
                 </ul>
             </li>
 

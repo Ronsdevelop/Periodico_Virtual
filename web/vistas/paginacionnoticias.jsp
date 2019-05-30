@@ -1,12 +1,21 @@
 <%@page import="javax.swing.table.DefaultTableModel"%>
 <%@page import="DAO.NoticiaDAO" %>
 <%@page import="DAO.Conexion" %>
+<%@page import="DAO.DiarioDAO" %>
 <%@page language="java" %>
-<% int cantnot = NoticiaDAO.CantNoticias(); %>
+
 <% Conexion cn = new Conexion(); %>
 <% NoticiaDAO noti = new NoticiaDAO(); %>
+<% DiarioDAO diario = new DiarioDAO(); %>
+<% DefaultTableModel dia = new DefaultTableModel(); %>
 <% DefaultTableModel lnot = new DefaultTableModel();
-    lnot = noti.ListaNews(cn.conectar());%>
+    String cod = request.getParameter("tipo");
+
+    lnot = noti.ListaNews(cn.conectar(), cod);
+    dia = diario.nombreDiario(cn.conectar(), cod);
+
+%>
+<% int cantnot = NoticiaDAO.CantNoticias(cod);%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,12 +33,14 @@
                 $('.pagination li a').on('click', function () {
 
                     var page = $(this).attr('data');
-                    var dataString = 'page=' + page;
+                    var cod = document.getElementById("coddiario").value;
+
 
                     $.ajax({
 
                         url: "../PaginacionServlet",
-                        data: dataString,
+                        data: {'page': page,
+                            'codigo': cod},
                         success: function (data) {
                             $('.items').fadeIn(2000).html(data);
                             $('.pagination li').removeClass('active');
@@ -52,7 +63,8 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        <i class="fa fa-home"></i>  DEPORTES
+                        <i class="fa fa-soccer-ball-o"></i>  <%= dia.getValueAt(0, 1)%>
+                        <input type="tex" id="coddiario" value="<%= dia.getValueAt(0, 0)%>" hidden="">
 
                     </h1>
                     <ol class="breadcrumb">
@@ -68,6 +80,7 @@
                     <section class="row">
                         <div id="contenidogeneral" class="col-lg-12">
 
+
                             <%
                                 if (cantnot > 0) {
                                     int nropaginas = (int) Math.ceil(cantnot / 6.0);
@@ -78,10 +91,10 @@
                                         for (int i = 0; i < lnot.getRowCount(); i++) {
                                             out.print("<li class='col-lg-4'>");
                                             out.print("<div class='item'>");
-                                            out.print("<img id='img' src='" + lnot.getValueAt(i, 8)+"' width='100'height='100' />");
-                                            out.print("<h3> "+lnot.getValueAt(i, 2)+"</h3>");
-                                            out.print("<p class='description_short'>"+lnot.getValueAt(i, 3)+"</p>");
-                                            out.print("<p><a class='btn btn-info  ' id='figcaption' href='../vistas/noticia.jsp?codno="+lnot.getValueAt(i, 0)+"' target='_blank'><i class='fa fa-eye '></i> Ver</a></p>");
+                                            out.print("<img id='img' src='" + lnot.getValueAt(i, 8) + "' width='100'height='100' />");
+                                            out.print("<h3> " + lnot.getValueAt(i, 2) + "</h3>");
+                                            out.print("<p class='description_short'>" + lnot.getValueAt(i, 3) + "</p>");
+                                            out.print("<p><a class='btn btn-info  ' id='figcaption' href='../vistas/noticia.jsp?codno=" + lnot.getValueAt(i, 0) + "' ><i class='fa fa-eye '></i> Ver Noticia</a></p>");
                                             out.print("</div>");
                                             out.print("</li>");
 
