@@ -28,11 +28,11 @@ public class PaginacionServlet extends HttpServlet {
                 for (int j = 0; j < t.getRowCount(); j++) {
                     out.print("<li class='col-lg-4'>");
                     out.print("<div class='item'>");
-                    out.print("<img class='img-fluid mx-auto d-block' src='' width='100' height='100' />");
+                    out.print("<img id='img' src='" + t.getValueAt(j, 8)+"' width='100'height='100' />");
                     out.print("<h3>" + t.getValueAt(j, 2) + "</h3>");
                     out.print("<p class='description_short'>" + t.getValueAt(j, 3) + "</p>");
-                    out.print("<p class='price'> EUR</p>");
-                    out.print("<p><a class='btn btn-primary link_rewrite mx-auto d-block' href='../vistas/noticia.jsp' target='_blank'><i class='fa fa-eye'></i> Ver</a></p>");
+                     
+                    out.print("<p><a class='btn btn-info' id='figcaption' href='../vistas/noticia.jsp?codno="+t.getValueAt(j, 0)+"' target='_blank'><i class='fa fa-eye'></i> Ver</a></p>");
                     out.print("</div>");
                     out.print("</li>");
 

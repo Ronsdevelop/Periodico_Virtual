@@ -14,7 +14,7 @@
 	font-size: 1.5em;
 	text-align: justify;
 }
-#cuerpo #contenidogeneral figure {
+#cuerpo #contenidogeneral #figure {
 	width: 30%;
 	margin-right: 1.5%;
 	margin-left: 1.5%;
@@ -30,7 +30,7 @@
 	box-sizing: inherit;
 	height: 381px;
 }
-#contenidogeneral figure img {
+#contenidogeneral #figure img {
 	width: 95%;
 	margin-right: 2.5%;
 	margin-top: 2.5%;
@@ -38,7 +38,7 @@
 	margin-left: 2.5%;
 	border-radius: 10px;
 }
-#contenidogeneral figure figcaption {
+#contenidogeneral #figure figcaption {
 	width: 95%;
 	margin-top: 2.5%;
 	margin-right: 2.5%;
@@ -51,7 +51,7 @@
 	font-size: 1em;
 	text-align: justify;
 }
-#contenidogeneral figure p {
+#contenidogeneral #figure p {
 	display: block;
 	margin-left: 10px;
 	margin-right: 10px;
@@ -66,7 +66,7 @@
 	border-radius: 10px;
 	background-color: #373737;
 }
-#contenidogeneral figure p:hover {
+#contenidogeneral #figure p:hover {
 	color: #FFFFFF;
 	background-color: #1B1B1B;
 	}

@@ -31,7 +31,7 @@
                     var dataString = 'page=' + page;
 
                     $.ajax({
-                        type: "POTS",
+                      
                         url: "../PaginacionServlet",
                         data: dataString,
                         success: function (data) {
@@ -89,7 +89,6 @@
 
                                 out.print("<ul class='row items'>");
                                 for (int i = 0; i < lnot.getRowCount(); i++) {
-
                                     out.print("<li class='col-lg-4'>");
                                     out.print("<div class='item'>");
                                     out.print("<img class='img-fluid mx-auto d-block' src='../Plugins/noticia/images/planes/garecanoti.jpg' width='100'height='100' />");

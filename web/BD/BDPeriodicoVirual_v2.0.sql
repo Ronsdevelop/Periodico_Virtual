@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.1.32-MariaDB : Database - bdperiodicovirtual
+MySQL - 5.5.5-10.1.37-MariaDB : Database - bdperiodicovirtual
 *********************************************************************
 */
 
@@ -92,7 +92,7 @@ CREATE TABLE `noticia` (
 
 /*Data for the table `noticia` */
 
-insert  into `noticia`(`idNoticia`,`anteTitulo`,`Titular`,`Entradilla`,`CuerpoNoticia`,`subtitulo`,`fecha`,`fuente`,`fotografia`,`epigrafe`,`video`,`idRedactor`,`idDiario`) values ('NOT00000000000000001','Ricardo Gareca va disipando sus dudas','Ricardo Gareca sorprendido con desempeño de este jugador en los entrenamientos de la Selección','el mejor jugador del momento','Ricardo Gareca no quiere llevar a nadie a la Copa América de Brasil de paseo. Por ello viene observando en los entrenamientos al jugador diferente. Varios se esfuerzan pero, por ahora solo hay uno que lo tiene apuntado por su gran nivel; Beto Da Silva ','garequita','2019-05-28','libero','http://localhost:8009/SSPeriodicoVirtual/Plugins/noticia/images/planes/garecanoti.jpg','Imagen de gareca','http://www.htmlquick.com/es/reference/tags/input-image.html','RE00000001','DI00000003'),('NOT00000000000000002',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000006'),('NOT00000000000000003',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000004'),('NOT00000000000000004',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000005',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000005'),('NOT00000000000000006',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000007',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000008',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000009',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000010',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000004');
+insert  into `noticia`(`idNoticia`,`anteTitulo`,`Titular`,`Entradilla`,`CuerpoNoticia`,`subtitulo`,`fecha`,`fuente`,`fotografia`,`epigrafe`,`video`,`idRedactor`,`idDiario`) values ('NOT00000000000000001','Ricardo Gareca va disipando sus dudas','Ricardo Gareca sorprendido con desempeño de este jugador en los entrenamientos de la Selección','el mejor jugador del momento que tiene la seleccion','Ricardo Gareca no quiere llevar a nadie a la Copa América de Brasil de paseo. Por ello viene observando en los entrenamientos al jugador diferente. Varios se esfuerzan pero, por ahora solo hay uno que lo tiene apuntado por su gran nivel; Beto Da Silva ','garequita','2019-05-28','libero','../Plugins/noticia/images/planes/garecanoti.jpg','Imagen de gareca','http://www.htmlquick.com/es/reference/tags/input-image.html','RE00000001','DI00000003'),('NOT00000000000000002',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000006'),('NOT00000000000000003',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000004'),('NOT00000000000000004',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000005',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000005'),('NOT00000000000000006',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000007',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000008',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000009',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000003'),('NOT00000000000000010',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'RE00000001','DI00000004');
 
 /*Table structure for table `redactor` */
 
@@ -156,6 +156,21 @@ DELIMITER $$
 BEGIN
 	
 	set @consulta=CONCAT('SELECT * FROM  noticia ORDER BY idNoticia DESC LIMIT ', inic, ',6;');
+	
+	PREPARE consulta FROM @consulta;
+	EXECUTE consulta;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `sp_paginacionprimer` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `sp_paginacionprimer` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_paginacionprimer`()
+BEGIN
+    SET @consulta=CONCAT('SELECT * FROM  noticia ORDER BY idNoticia ASC LIMIT 0,6;');
 	
 	PREPARE consulta FROM @consulta;
 	EXECUTE consulta;

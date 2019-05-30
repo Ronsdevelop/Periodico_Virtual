@@ -94,7 +94,7 @@ public class NoticiaDAO {
         try {
            DefaultTableModel tb;
            String [] Columnas = {"idNoticia","anteTitulo","Titular","Entradilla","CuerpoNoticia","subtitulo","fecha","fuente","fotografia","epigrafe","video","idRedactor","idDiario"};
-           cs = cn.prepareCall("select idNoticia,anteTitulo,Titular,Entradilla,CuerpoNoticia,subtitulo,fecha,fuente,fotografia,epigrafe,video,idRedactor,idDiario from noticia");
+           cs = cn.prepareCall("CALL sp_paginacionprimer();");
            cn.setAutoCommit(false);
            rs = cs.executeQuery();
            tb = new DefaultTableModel(null,Columnas);
