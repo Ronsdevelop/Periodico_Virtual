@@ -32,32 +32,28 @@
       *********************************************************************************************************************************************************** -->
 
 	  <div id="login-page">
-	  	<div class="container">
-	  	
-		      <form class="form-login" action="index.html">
-		        <h2 class="form-login-heading">Regrista Nueva Cuenta</h2>
-		        <div class="login-wrap">
-		            <input type="text" class="form-control" placeholder="Nombre Completo" autofocus>
-		            <br>
-		             <input type="text" class="form-control" placeholder="Correo Electronico" autofocus>
-		            <br>
-		              <input type="text" class="form-control" placeholder="Usuario" autofocus>
-		            <br>
-		            <input type="password" class="form-control" placeholder="Contraseña">
-		          <br>
-		            <input type="password" class="form-control" placeholder="Repite Contraseña">
-		            <br>
-		            <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> REGISTRAR</button>
-		        
-		            
-		        
-		
-		        </div>		
-		 
-		
-		      </form>	  	
-	  	
-	  	</div>
+	  	 <div class="container">
+
+                <form class="form-login" action="../servletRegistroUsuario" method="POST">
+                    <h2 class="form-login-heading">Regrista Nueva Cuenta</h2>
+                    <center bgcolor="red"><font color="red"><h5 class="form-login-heading" >${param.register_err}</h5></font></center>
+                    <div class="login-wrap">
+                        <input type="text" class="form-control" name="nom" placeholder="Nombre Completo" autofocus required="">
+                        <br>
+                        <input type="text" class="form-control" name="ape" placeholder="Apellido Completo" autofocus required="">
+                        <br>
+                        <input type="email" class="form-control" name="cor" placeholder="Correo Electronico" autofocus required="">
+                        <br>
+                        <input type="text" class="form-control" name="usu" placeholder="Usuario" autofocus required="">
+                        <br>
+                        <input type="password" class="form-control" name="con" placeholder="Contraseña" required="">
+                        <br>
+                        <button class="btn btn-theme btn-block" href="servlet" type="submit"><i class="fa fa-lock"></i> REGISTRAR</button>
+                        <br>
+                        <center><input class="btn btn-warning" onclick="self.location.href = '../index.jsp'" type="button" value="INICIAR SESI&Oacute;N"></center>
+                    </div>		
+                </form>	  	
+            </div>
 	  </div>
 
     <!-- js placed at the end of the document so the pages load faster -->

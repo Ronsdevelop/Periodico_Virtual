@@ -32,58 +32,59 @@
       *********************************************************************************************************************************************************** -->
 
 	  <div id="login-page">
-	  	<div class="container">
-	  	
-                    <form class="form-login" action="vistas/home.jsp">
-		        <h2 class="form-login-heading">Iniciar Sesión</h2>
-		        <div class="login-wrap">
-		            <input type="text" class="form-control" placeholder="Usuario" autofocus>
-		            <br>
-		            <input type="password" class="form-control" placeholder="Contraseña">
-		            <label class="checkbox">
-		                <span class="pull-right">
-		                    <a data-toggle="modal" href="login.html#myModal"> Olvidaste tú Contraseña?</a>
-		
-		                </span>
-		            </label>
-		            <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> INGRESAR</button>
-		            <hr>
-		            
-		           
-		            <div class="registration">
-		                Aun no Estas Registrado?<br/>
-                                <a class="" href="vistas/registro.jsp">
-		                    Crea tu Cuenta
-		                </a>
-		            </div>
-		
-		        </div>
-		
-		          <!-- Modal -->
-		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-		              <div class="modal-dialog">
-		                  <div class="modal-content">
-		                      <div class="modal-header">
-		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		                          <h4 class="modal-title">Olvidaste tú contraseña ?</h4>
-		                      </div>
-		                      <div class="modal-body">
-		                          <p>Ingresa tu correo electronico para reestablecer tu contraseña</p>
-		                          <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
-		
-		                      </div>
-		                      <div class="modal-footer">
-		                          <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
-		                          <button class="btn btn-theme" type="button">Enviar</button>
-		                      </div>
-		                  </div>
-		              </div>
-		          </div>
-		          <!-- modal -->
-		
-		      </form>	  	
-	  	
-	  	</div>
+	          <div class="container">
+
+                <form class="form-login" action="IniciarSesionServlet" method="POST">
+                    <h2 class="form-login-heading">Iniciar Sesi&oacute;n</h2>
+                    <center bgcolor="red"><font color="red"><h5 class="form-login-heading" >${param.session_err}</h5></font></center>
+                    <div class="login-wrap">
+                        <input type="text" name="user" class="form-control" placeholder="Usuario" autofocus>
+                        <br>
+                        <input type="password" name="password" class="form-control" placeholder="Contrase&ntilde;a">
+                        <label class="checkbox">
+                            <span class="pull-right">
+                                <a data-toggle="modal" href="login.html#myModal"> Olvidaste tu Contrase&ntilde;a?</a>
+
+                            </span>
+                        </label>
+                        <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> INGRESAR</button>
+                        <hr>
+
+                        <div class="registration">
+                            Aun no Estas Registrado?<br/>
+                            <a class="" href="vistas/registro.jsp">
+                                Crea tu Cuenta
+                            </a>
+                        </div>
+
+                    </div>
+                    </form>
+                    <!-- Modal -->
+                    <form action="recuperar">
+                    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">Olvidaste t&uacute; contrase&ntilde;a ?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Ingresa tu correo electronico para reestablecer tu contrase&ntilde;a</p>
+                                    <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
+                                    <button class="btn btn-theme" type="button">Enviar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- modal -->
+
+                </form>	  	
+
+            </div>
 	  </div>
 
     <!-- js placed at the end of the document so the pages load faster -->
